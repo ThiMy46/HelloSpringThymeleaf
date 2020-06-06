@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    
+    <!-- scan xác định controller nào xử lý request gửi tới -->
+  <context:component-scan base-package="com.tuhoclaptrinh.controller" />
+  
+ 	<!-- mapping để lấy view - khi controller trả tên view lên dispatcherServlet -->
+  	<bean id="viewResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+	    <property name="prefix" value="/WEB-INF/views/" />
+	    <property name="suffix" value=".html" />
+	    <property name="cacheable" value="false" />
+	</bean>
+	
+	<bean id="engine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+	    <property name="templateResolver" ref="viewResolver" />
+	</bean>
+	
+	<bean id="" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+	    <property name="templateEngine" ref="engine" />
+	</bean>						
+</beans>
